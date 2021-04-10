@@ -1,0 +1,28 @@
+{
+  "name": "backset",
+  "version": "1.0.0",
+  "description": "backend's setup",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "cd set-up && npm run build",
+    "install-set-up": "cd set-up && npm install",
+    "heroku-postbuild": "npm run install-set-up && npm run build",
+    "start": "node server.js",
+    "set-up": "cd set-up && npm run start",
+    "dev": "concurrently -n 'server,set-up', -c 'yellow,green' \"nodemon server.js\" \"npm run set-up\"",
+    "start-watch": "concurrently -n 'server,set-up', -c 'purple,orange' \"npm run server.js\" \"npm run set-up\""
+  },
+  "author": "me",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "concurrently": "^5.3.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.2",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0"
+  }
+}
